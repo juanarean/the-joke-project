@@ -4,6 +4,8 @@
   "description": "Showcase Nuxt project",
   "main": "index.js",
   "scripts": {
+    "install:all": "npm install --prefix front-end/vue-app && npm install --prefix front-end/nuxt-app && npm install --prefix back-end/official_joke_api",
+    "clean:all": "rm -rf front-end/vue-app/node_modules front-end/nuxt-app/node_modules back-end/official_joke_api/node_modules",
     "start": "pm2 start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
