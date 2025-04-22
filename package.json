@@ -1,0 +1,23 @@
+{
+  "name": "the-joke-project",
+  "version": "1.0.0",
+  "description": "Showcase Nuxt project",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanarean/the-joke-project.git"
+  },
+  "author": "Juan Arean",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juanarean/the-joke-project/issues"
+  },
+  "homepage": "https://github.com/juanarean/the-joke-project#readme",
+  "dependencies": {
+    "pm2": "^6.0.5"
+  }
+}
