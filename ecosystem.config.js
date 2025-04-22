@@ -5,8 +5,14 @@ module.exports = {
       script : "back-end/official_joke_api/index.js"
     },
     {
-      name: 'front-end',
-      cwd: './front-end/', // Or a number of instances
+      name: 'nuxt-app',
+      cwd: './front-end/nuxt-app/',
+      script: 'npm',
+      args: 'run dev'
+    },
+    {
+      name: 'vue-app',
+      cwd: './front-end/vue-app/',
       script: 'npm',
       args: 'run dev'
     }
