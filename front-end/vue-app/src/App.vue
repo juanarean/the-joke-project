@@ -1,47 +1,20 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="card">
+    <TreeTable :value="nodes" tableStyle="min-width: 50rem">
+      <Column field="name" header="Name" expander style="width: 34%"></Column>
+      <Column field="size" header="Size" style="width: 33%"></Column>
+      <Column field="type" header="Type" style="width: 33%"></Column>
+    </TreeTable>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script setup>
+import { ref, onMounted } from 'vue';
+import { NodeService } from '@/services/service';
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+onMounted(() => {
+  NodeService.getTreeTableNodes().then((data) => (nodes.value = data));
+});
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+const nodes = ref();
+</script>
