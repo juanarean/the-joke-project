@@ -7,10 +7,20 @@
   font-weight: normal;
 }
 
+.title {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
 .search {
   display: flex;
   flex-direction: column;
   max-width: 20rem;
+  margin: 1rem 0;
+}
+
+.punchline {
+  text-align: center;
 }
 
 a,

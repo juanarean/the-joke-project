@@ -1,5 +1,11 @@
 <template>
   <div>
+    <h1 class="title">Let's have some laughs!!!</h1>
+    <p>
+      Here is a list of jokes from the <a href="https://github.com/15Dkatz/official_joke_api/">Joke API</a>
+      <br />
+      You can search by some keyword, change the order or just turn pages.
+    </p>
     <div class="search">
       <label for="query">Search</label>
       <InputText type="text" v-model="query"></InputText>
@@ -12,7 +18,9 @@
       <Column field="type" header="Type" sortable style="width: 20%"></Column>
       <Column field="setup" header="Setup" sortable style="width: 50%"></Column>
       <template #expansion="slotProps">
-        <h3>{{ slotProps.data.punchline }}</h3>
+        <div class="punchline">
+          <h2>{{ slotProps.data.punchline }}</h2>
+        </div>
       </template>
     </DataTable>
     <Paginator :rows="pageSize" :totalRecords="totalJokes" :rowsPerPageOptions="[10, 20, 30]" @page="pageChange">
