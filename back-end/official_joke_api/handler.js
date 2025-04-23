@@ -44,6 +44,13 @@ const count = Object.keys(jokes).length;
  */
 const jokeById = (id) => (jokes.filter(jk => jk.id === id)[0]);
 
+/**
+* Return the jokes page requested with filtering and sorting
+* @param {number} page - requested page
+* @param {number} pageSize - number of rows
+* @param {string} query - string to filter
+* @param {string} sorting - its a key:order string
+*/
 const jokesPage = (page, pageSize, query, sorting) => {
   const [key, order] = sorting.split(':');
   const offset = page * pageSize;
