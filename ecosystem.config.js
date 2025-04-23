@@ -1,14 +1,8 @@
 module.exports = {
-  apps : [
+  apps: [
     {
-      name   : "back-end",
-      script : "back-end/official_joke_api/index.js"
-    },
-    {
-      name: 'nuxt-app',
-      cwd: './front-end/nuxt-app/',
-      script: 'npm',
-      args: 'run dev'
+      name: "back-end",
+      script: "back-end/official_joke_api/index.js"
     },
     {
       name: 'vue-app',
