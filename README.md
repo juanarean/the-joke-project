@@ -1,4 +1,4 @@
-# Joke Project Exercise
+# QU Web Developer Challenge - Joke Project Exercise
 
 ## Description
 
