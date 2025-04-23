@@ -5,6 +5,7 @@
 This project is a monorepo containing a Back-end that serves a list of jokes and a Front-end that displays them. The Front-end presents the jokes as a list with pagination, you can sort the jokes by ID, type of joke and the setup propertie which is the first part of the joke, if you want to know how the joke ends, the punchline you need to expand the joke's row, that builds the expectation to know how the joke makes you laugh.
 
 
+[Screencast from 2025-04-23 10-22-44.webm](https://github.com/user-attachments/assets/08232e4e-cebf-4dbc-a157-4543fa34ea74)
 
 To test the project in local, clone the repository and cd into project's folder.
 Then, to install all dependencies needed run in the terminal:
@@ -33,6 +34,12 @@ For Vue there are a couple of options for UI components library recomende [here]
 Regharding the decision on handeling pagination, sorting and filtering on the back-end, I think is the correct approach in my experience. Another way could have been to retrieve all jokes from the Back-end onMount and the let the `DataTable` component handle everything. But often in a real-life project the data is huge or it has to be processed in some form and it's not good idea for performance to load the Front-end with all that data.
 
 ## Code Explanation
+
+##Root project
+In the root folder of this project you'll see a package.json that installs a node utility package called [pm2](https://www.npmjs.com/package/pm2). I use this to handle several process when I need to serve more than one project like the two we have here, the Back-end and the Front-end.
+For pm2 to execute all the process they have to be defined in the [ecosystem.config.js](https://github.com/juanarean/the-joke-project/blob/main/ecosystem.config.js)
+So with `pm2 start` all processes start running and with `pm2 delete all` all the processes stop and clear cache.
+It's just an easy way to start everything with one command.
 
 ### Back-end
 As I sayd before I used the recomended API prooject for the exercise and add then endpoint I needed:
@@ -106,3 +113,11 @@ Given it's a simple example I decided to use just the App.vue component and I cr
 
 I had some minor issue to handle custom sorting with the `DataTable` from the primevue library but I just needed to dig deeper on the docs to find the [DataTableSortEvent](https://primevue.org/datatable/#api.datatable.events.DataTableSortEvent), after that the rest was ppretty straight forward.
 Theres is way to auto import all the primevue components and then the treeshake disposes the unused ones but I only use a few so I imported manually in the [main.ts](https://github.com/juanarean/the-joke-project/blob/main/front-end/vue-app/src/main.ts).
+
+## Things To Improve
+> A list of things that I would like to add with more time.
+
+* Add a select to filter by joke type, change the response to give the available types and fill a dropdown with them, when user selects one filter by that type.
+* Add some animation when open a punchline.
+* Improve on theming. I have some UX concepts but I feel I lack in style (I don't even dress cool :\ ).
+* Add a loading while fetching data. Didn't notice I need one but I think it's necessary
