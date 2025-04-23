@@ -1,6 +1,7 @@
 const express = require('express');
 const LimitingMiddleware = require('limiting-middleware');
-const { types, randomJoke, randomTen, randomSelect, jokeByType, jokeById, count } = require('./handler');
+const { types, randomJoke, randomTen, randomSelect, jokeByType, jokeById, count, jokesPage } = require('./handler');
+const cors = require('cors')
 
 const app = express();
 
@@ -10,6 +11,11 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 });
+
+app.use(cors());
+
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 app.get('/', (req, res) => {
   res.send('Try /random_joke, /random_ten, /jokes/random, or /jokes/ten , /jokes/random/<any-number>');
@@ -46,7 +52,7 @@ app.get("/jokes/random/:num", (req, res) => {
     }
   } catch (e) {
     return next(e);
-  } 
+  }
 });
 
 app.get('/jokes/ten', (req, res) => {
@@ -74,6 +80,15 @@ app.get('/jokes/:id', (req, res, next) => {
 
 app.get('/types', (req, res, next) => {
   res.json(types);
+});
+
+app.post('/jokes/query', (req, res) => {
+  const { page, pageSize, query, sorting } = req.body;
+  const pageValue = parseInt(page, 10)
+  const pageSizeValue = parseInt(pageSize, 10)
+  res.json(
+    jokesPage(pageValue, pageSizeValue, query.toLowerCase(), sorting)
+  )
 })
 
 app.use((err, req, res, next) => {

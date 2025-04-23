@@ -7,6 +7,12 @@
   font-weight: normal;
 }
 
+.search {
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+}
+
 a,
 .green {
   text-decoration: none;
@@ -25,11 +31,5 @@ a,
   body {
     display: flex;
     place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
   }
 }

@@ -44,4 +44,46 @@ const count = Object.keys(jokes).length;
  */
 const jokeById = (id) => (jokes.filter(jk => jk.id === id)[0]);
 
-module.exports = { jokes, types, randomJoke, randomN, randomTen, randomSelect, jokeById, jokeByType, count };
+const jokesPage = (page, pageSize, query, sorting) => {
+  const [key, order] = sorting.split(':');
+  const offset = page * pageSize;
+
+  const sortAlphaticaly = (a, b, order) => {
+    if (order === 'desc') {
+      if (a > b) {
+        return -1
+      }
+      if (a < b) {
+        return 1
+      }
+      return 0
+    } else {
+      if (a > b) {
+        return 1
+      }
+      if (a < b) {
+        return -1
+      }
+      return 0
+    }
+  }
+
+  const filteredJokes = jokes
+    .sort((a, b) => {
+      if (typeof a[key] === 'number') {
+        if (order === 'desc') {
+          return b[key] - a[key]
+        }
+        return a[key] - b[key]
+      }
+      return sortAlphaticaly(a[key], b[key], order)
+    })
+    .filter(joke => !query || joke.setup.toLowerCase().includes(query) || joke.type.toLowerCase().includes(query))
+
+  return {
+    jokes: filteredJokes.slice(offset, offset + pageSize),
+    total: filteredJokes.length
+  }
+}
+
+module.exports = { jokes, types, randomJoke, randomN, randomTen, randomSelect, jokeById, jokeByType, count, jokesPage };
