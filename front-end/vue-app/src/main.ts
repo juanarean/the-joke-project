@@ -10,8 +10,8 @@ import { DataTable, InputText, Message, Paginator } from 'primevue'
 const app = createApp(App)
 app.use(PrimeVue, {
   theme: {
-    preset: Aura
-  }
+    preset: Aura,
+  },
 })
 app.component('DataTable', DataTable)
 app.component('Column', Column)
