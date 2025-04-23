@@ -2,14 +2,12 @@
 
 ## Description
 
-This project is a monorepo containing a Back-end that serves a list of jokes and a Front-end that displays them. The Front-end presents the jokes as a list with pagination, you can sort the jokes by ID, type of joke and the setup propertie which is the first part of the joke, if you want to know how the joke ends, the punchline you need to expand the joke's row, that builds the expectation to know how the joke makes you laugh.
-
+This project is a monorepo containing a Back-end that serves a list of jokes and a Front-end that displays them. The Front-end presents the jokes as a list with pagination, you can sort the jokes by ID, type of joke and the setup property which is the first part of the joke, if you want to know how the joke ends, the punchline, you need to expand the joke's row, that builds the expectation.
 
 [Screencast from 2025-04-23 10-22-44.webm](https://github.com/user-attachments/assets/08232e4e-cebf-4dbc-a157-4543fa34ea74)
 
 To test the project in local, clone the repository and cd into project's folder.
 Then, to install all dependencies needed run in the terminal:
-
 ```shell
 npm run install:all
 ```
@@ -24,14 +22,14 @@ To access the Front-end open your browser at [http://localhost:5173/](http://loc
 ## My Journey
 After reading the exercise, my first decision was to go on with the suggested API back-end project and add the modifications I needed.
 For the Front-end I was a bit doubtful if resolve it in a Vue.js app or a Nuxt app. I was familiar with Vue docs but not with Nuxt, so I read some of it.
-I found that the prefered UI library for Nuxt is NuxtUI that it's intalable from the creation of the project, it can also be used for Vue projects.
-For Vue there are a couple of options for UI components library recomende [here](https://ui-libs.vercel.app/), I choose [primevue](https://primevue.org/), first because it has the components i needed and secondly I liked the default theming.
+I found that the preferred UI library for Nuxt is NuxtUI that it's installable from the creation of the project, it can also be used for Vue projects.
+For Vue there are a couple of options for UI components library recommended [here](https://ui-libs.vercel.app/), I choose [primevue](https://primevue.org/), firstly because it has the components I needed and secondly I liked the default theming.
 
-> *Initiali I created both front-end projects, Vue and Nuxt, but I couldn't find time to work on both so I end up deleting the Nuxt app, you can check that in the commit history.*
+> *Initially I created both front-end projects, Vue and Nuxt, but I couldn't find time to work on both, so I end up deleting the Nuxt app. You can check that in the commit history.*
 
 **IMPORTANT**
 
-Regharding the decision on handeling pagination, sorting and filtering on the back-end, I think is the correct approach in my experience. Another way could have been to retrieve all jokes from the Back-end onMount and the let the `DataTable` component handle everything. But often in a real-life project the data is huge or it has to be processed in some form and it's not good idea for performance to load the Front-end with all that data.
+Regarding the decision on handling pagination, sorting and filtering on the back-end, I think is the correct approach in my experience. Another way could have been to retrieve all jokes from the Back-end onMount and the let the `DataTable` component handle everything. But often in a real-life project the data is huge or it has to be processed in some form and it's not good idea for performance to load the Front-end with all that data.
 
 ## Code Explanation
 
