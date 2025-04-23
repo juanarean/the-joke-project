@@ -35,7 +35,7 @@ Regharding the decision on handeling pagination, sorting and filtering on the ba
 
 ## Code Explanation
 
-##Root project
+### Root project
 In the root folder of this project you'll see a package.json that installs a node utility package called [pm2](https://www.npmjs.com/package/pm2). I use this to handle several process when I need to serve more than one project like the two we have here, the Back-end and the Front-end.
 For pm2 to execute all the process they have to be defined in the [ecosystem.config.js](https://github.com/juanarean/the-joke-project/blob/main/ecosystem.config.js)
 So with `pm2 start` all processes start running and with `pm2 delete all` all the processes stop and clear cache.
