@@ -101,6 +101,8 @@ const jokesPage = (page, pageSize, query, sorting) => {
 
 ### Front-end
 Given it's a simple example I decided to use just the App.vue component and I created a [service](https://github.com/juanarean/the-joke-project/blob/main/front-end/vue-app/src/services/service.ts) to handle the data fetching so the App component is a bit cleaner and it only cares about components behaviour.
+
 >I always try to work with Typescript if posible, I prefer to have all the data typed and checked.
+
 I had some minor issue to handle custom sorting with the `DataTable` from the primevue library but I just needed to dig deeper on the docs to find the [DataTableSortEvent](https://primevue.org/datatable/#api.datatable.events.DataTableSortEvent), after that the rest was ppretty straight forward.
 Theres is way to auto import all the primevue components and then the treeshake disposes the unused ones but I only use a few so I imported manually in the [main.ts](https://github.com/juanarean/the-joke-project/blob/main/front-end/vue-app/src/main.ts).
