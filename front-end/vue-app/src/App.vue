@@ -33,18 +33,14 @@ import { ref, watch, onMounted } from 'vue';
 import { getJokes } from './services/service.ts'
 
 onMounted(() => {
-  getJokes(0, 10, '', 'id:asc')
-    .then((data) => {
-      jokes.value = data.data.jokes
-      totalJokes.value = data.data.total
-    });
+  loadJokes();
 });
 
 const loadJokes = () => {
   getJokes(page.value, pageSize.value, query.value, sorting.value)
     .then((data) => {
-      jokes.value = data.data.jokes
-      totalJokes.value = data.data.total
+      jokes.value = data.data.jokes;
+      totalJokes.value = data.data.total;
     });
 }
 
@@ -55,16 +51,17 @@ const customSort = (event) => {
 
 const pageChange = (event) => {
   page.value = event.page;
+  pageSize.value = event.rows;
   loadJokes();
 }
 
 const jokes = ref();
 const totalJokes = ref();
 const expandedRows = ref();
-const sorting = ref('id:asc')
-const page = ref(0)
-const pageSize = ref(10)
-const query = ref('')
+const sorting = ref('id:asc');
+const page = ref(0);
+const pageSize = ref(10);
+const query = ref('');
 
 watch(query, (_, newQuery) => {
   setTimeout(() => {
